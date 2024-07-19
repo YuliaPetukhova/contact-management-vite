@@ -5,8 +5,20 @@ export const useContactStore = defineStore('contact', {
     state: () => ({
         editableContact: {} as IContact,
         showForm: false,
+        searchBy: '',
 
         contacts: JSON.parse(localStorage.getItem('contactList') as string) as IContact[],
+
+        getters: {
+            filteredContacts: () => {
+                console.log(useContactStore().searchBy)
+                return useContactStore().contacts.filter((filteredContact: IContact) => {
+                    return useContactStore().searchBy
+                        ? filteredContact.name.includes(useContactStore().searchBy)
+                        : true;
+                });
+            }
+        },
     }),
 
     actions: {
@@ -21,7 +33,7 @@ export const useContactStore = defineStore('contact', {
             localStorage.setItem('contactList', JSON.stringify(this.contacts));
         },
 
-        setEditableContact(contact: IContact ): void {
+        setEditableContact(contact: IContact): void {
             this.editableContact = this.contacts.find((contactItem: IContact) => {
                 return contactItem.id === contact.id;
             })!;

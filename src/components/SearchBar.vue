@@ -1,6 +1,10 @@
-<script setup lang="ts">
+<script lang="ts">
 
+import {useContactStore} from "../store/ContactStore.ts";
 
+export default {
+  methods: {useContactStore},
+}
 </script>
 
 <template>
@@ -14,9 +18,12 @@
                 d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
         </svg>
       </div>
-      <input type="text" id="table-search"
-             class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80  focus:ring-blue-500 focus:border-blue-500"
-             placeholder="Поиск по имени">
+      <input
+          type="text" id="table-search"
+          class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80  focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Поиск по имени"
+          v-model="useContactStore().searchBy"
+      >
     </div>
   </div>
 </template>

@@ -23,7 +23,8 @@ export default {
 <template>
   <ul role="list" class="divide-y divide-gray-100">
 
-    <li v-for="(contact, index) in useContactStore.contacts" :key="index" class="flex justify-center gap-x-6 py-5">
+    <li v-for="(contact, index) in useContactStore.getters.filteredContacts()" :key="index"
+        class="flex justify-center gap-x-6 py-5">
 
       <div class="flex min-w-0 gap-x-3">
         <div class="min-w-0 flex-auto">
