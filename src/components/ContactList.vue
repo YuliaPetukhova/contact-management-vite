@@ -10,7 +10,7 @@ export default {
   },
   methods: {
     editContact(contact: IContact) {
-      useContactStore().editContact(contact);
+      useContactStore().setEditableContact(contact);
     },
 
     deleteContact(contact: IContact) {
@@ -22,6 +22,7 @@ export default {
 
 <template>
   <ul role="list" class="divide-y divide-gray-100">
+
     <li v-for="(contact, index) in useContactStore.contacts" :key="index" class="flex justify-center gap-x-6 py-5">
 
       <div class="flex min-w-0 gap-x-3">
@@ -47,6 +48,7 @@ export default {
       </div>
 
       <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+
         <button
             @click="deleteContact(contact)"
             class="rounded-md bg-red-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -54,6 +56,7 @@ export default {
         </button>
       </div>
     </li>
+
   </ul>
 </template>
 
