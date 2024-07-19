@@ -1,4 +1,6 @@
 <script lang="ts">
+import {useContactStore} from "../store/ContactStore.ts";
+
 export default {
   data() {
     return {
@@ -6,20 +8,25 @@ export default {
         name: '',
         phone: '',
         email: '',
+        id: Date.now(),
       },
       showForm: false,
     };
   },
   methods: {
+    useContactStore,
+
     addContact() {
       // Обработка добавления контакта (например, отправка на сервер)
-      console.log('Добавлен контакт:', this.contact);
+      useContactStore().addContact(this.contact);
       // Сброс формы
       this.contact = {
         name: '',
         phone: '',
         email: '',
+        id: Date.now(),
       };
+      return this.toggleForm();
     },
     toggleForm() {
       this.showForm = !this.showForm;

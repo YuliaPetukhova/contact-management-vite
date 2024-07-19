@@ -5,7 +5,7 @@ import ContactForm from "./components/ContactForm.vue";
 </script>
 
 <template>
-  <h1 class="text-2xl font-bold text-black-600">Contact Management</h1>
+  <h1 v-once class="text-2xl font-bold text-black-600">Contact Management</h1>
   <contact-form></contact-form>
   <search-bar></search-bar>
   <contact-list></contact-list>
